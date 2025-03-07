@@ -28,6 +28,7 @@ jobs:
       - name: Deploy to Vercel
         uses: amondnet/vercel-action@v25
         with:
-          vercel-token: sfag23y9nFPe64Y6e41zbeEm
-          vercel-org-id: enric-mirs-projects
-          vercel-project-id: prj_AiZuAEkiriTNlDS61EVVYlPXSfFK
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-args: "--prod"
