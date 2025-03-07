@@ -28,13 +28,6 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Log secrets (for debugging only, don't log sensitive data!)
-        run: |
-          echo "Vercel Token: ${{ secrets.VERCEL_TOKEN }}" 
-          echo "Vercel Org ID: ${{ secrets.VERCEL_ORG_ID }}" 
-          echo "Vercel Project ID: ${{ secrets.VERCEL_PROJECT_ID }}"
-        # Nota: No imprimas valores sensibles, esto solo para debugging.
-
       - name: Deploy to Vercel
         uses: amondnet/vercel-action@v25
         with:
