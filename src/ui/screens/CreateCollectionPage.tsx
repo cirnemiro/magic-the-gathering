@@ -24,7 +24,7 @@ export default function CreateCollectionPage() {
 
   return (
     <div className="w-full p-4 flex flex-col gap-4">
-      Create Your Deck
+      <h1 className="text-2xl">Create Your Deck</h1>
       <div className="flex gap-4">
         <div className="w-full flex flex-col gap-4">
           <GaleryFilters setFilters={setFilters} filters={filters} />

@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Card from "../components/atoms/Card/Card";
 import { Button } from "../components/atoms/Inputs";
 import { useRouter, useSearchParams } from "next/navigation";
+import CollectionCard from "../components/atoms/CollectionCard/CollectionCard";
 
 export default function CollectionsPage() {
   const router = useRouter();
@@ -28,18 +29,15 @@ export default function CollectionsPage() {
 
   return (
     <div className="container mx-auto p-4">
-      <h1> collections </h1>
+      <h1 className="text-2xl font-bold">Your Collections</h1>
       <div className="flex gap-4">
         {data?.map((collection) => (
-          <div
+          <CollectionCard
+            collection={collection}
             key={collection.id}
-            className={`border p-4 my-4 cursor-pointer ${
-              selectedCollection?.id === collection.id ? "bg-gray-200" : ""
-            }`}
+            isSelected={selectedCollection?.id === collection.id}
             onClick={() => setSelectedCollection(collection)}
-          >
-            <div>{collection.name}</div>
-          </div>
+          />
         ))}
       </div>
       {selectedCollection ? (
@@ -57,7 +55,11 @@ export default function CollectionsPage() {
           {
             <div className="grid grid-cols-4 gap-4">
               {selectedCollection.cards.map((card) => (
-                <Card key={card.card.id} card={card.card} />
+                <Card
+                  key={card.card.id}
+                  card={card.card}
+                  quantity={card.quantity}
+                />
               ))}
             </div>
           }
