@@ -50,6 +50,8 @@ export default function createApiClient(baseURL: string, version: "v1") {
         const validation = schema.safeParse(response.data);
 
         if (!validation.success) {
+          console.log("VALIDATION ERROR", validation.error);
+
           return {
             schema,
             error: validation.error,

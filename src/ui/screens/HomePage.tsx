@@ -1,28 +1,43 @@
 "use client";
-import { useGetAllCards } from "components/_modules/cards/application/get-all/getAllCards";
-import { error } from "console";
+import { useRouter } from "next/navigation";
+import useGetAllCollections from "../hooks/useGetAllCollections";
 
 export default function HomePage() {
-  const { cards, isLoading, error } = useGetAllCards({ pageSize: 100 });
-
-  console.log(error);
-
-  if (isLoading) {
-    return <div> Loading... </div>;
-  }
-
-  // if (error) {
-  //   return <div> Error: {error.message} </div>;
-  // }
+  const router = useRouter();
+  const { data, error, isLoading } = useGetAllCollections();
 
   return (
-    <div>
-      Home Page
-      <div>
-        {cards?.cards.map((card) => (
-          <div key={card.id}>{card.name}</div>
-        ))}
-      </div>
+    <div className="">
+      <section>
+        <h2 className="text-2xl font-bold">Your Collections</h2>
+        <div className="flex gap-4">
+          <div
+            className="border p-4 my-4 cursor-pointer"
+            onClick={() => router.push("/create-deck")}
+          >
+            Add new collection
+          </div>
+          {data?.map((collection) => (
+            <div
+              key={collection.id}
+              className="border p-4 my-4 cursor-pointer"
+              onClick={() => router.push(`/collections?id=${collection.id}`)}
+            >
+              <div>{collection.name}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+      <section>
+        <h2 className="text-2xl font-bold">Your Favourite Cards</h2>
+        <div className="flex gap-4">
+          {data?.map((collection) => (
+            <div key={collection.id} className="border p-4 my-4">
+              <div>{collection.name}</div>
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

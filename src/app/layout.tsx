@@ -1,17 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ProvidersWrapper } from "components/ui/providers/ProvidersWrapper";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import NavBar from "components/ui/components/sections/NavBar/NavBar";
+import SideBar from "components/ui/components/sections/SideBar/SideBard";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,10 +16,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <ProvidersWrapper>{children}</ProvidersWrapper>
+      <body className="overflow-hidden">
+        <ProvidersWrapper>
+          <NavBar />
+          <main className="flex-1 overflow-auto h-screen p-6 max-h-screen">
+            <div className="">{children}</div>
+          </main>
+        </ProvidersWrapper>
       </body>
     </html>
   );
