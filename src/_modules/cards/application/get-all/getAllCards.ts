@@ -1,26 +1,27 @@
 import { useQuery, UseQueryOptions } from "@tanstack/react-query";
-import { CardRepoistory } from "../../infrastructure/CardRepository";
-import { Api } from "components/infrastructure/api/apiTypes";
 import { CardsResponse } from "../../domain/cardsTypes";
+import { ApiError } from "next/dist/server/api-utils";
+import { CardRepository } from "../../infrastructure/CardRepository";
 
-export namespace FetchCards {
-  export type Response = CardsResponse;
-  export type Error = Api.Error;
-  export type Options = UseQueryOptions<Response, Error>;
-  export type Params = {
-    pageSize: string;
-    contains: string;
-    supertypes: string;
-  };
-}
+export type FetchCardsResponse = CardsResponse;
+export type FetchCardsError = ApiError;
+export type FetchCardsOptions = UseQueryOptions<
+  FetchCardsResponse,
+  FetchCardsError
+>;
+export type FetchCardsParams = {
+  pageSize: string;
+  contains: string;
+  supertypes: string;
+};
 
-const createKey = (params: FetchCards.Params) => [
+const createKey = (params: FetchCardsParams) => [
   "stocks",
   JSON.stringify(params),
 ];
 
-const queryFetcher = (params: FetchCards.Params) => async () => {
-  const result = await CardRepoistory.getAllCards(params);
+const queryFetcher = async (params: FetchCardsParams) => {
+  const result = await CardRepository.getAllCards(params);
   if ("error" in result) {
     throw result.error;
   }
@@ -28,12 +29,12 @@ const queryFetcher = (params: FetchCards.Params) => async () => {
 };
 
 export const useGetAllCards = (
-  params: FetchCards.Params,
-  options?: FetchCards.Options
+  params: FetchCardsParams,
+  options?: FetchCardsOptions
 ) => {
-  const { data, ...rest } = useQuery<FetchCards.Response, FetchCards.Error>({
+  const { data, ...rest } = useQuery<FetchCardsResponse, FetchCardsError>({
     queryKey: createKey(params),
-    queryFn: queryFetcher(params),
+    queryFn: () => queryFetcher(params),
     ...options,
   });
   return { cards: data, ...rest };

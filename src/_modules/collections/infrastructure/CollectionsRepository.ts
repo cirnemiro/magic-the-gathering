@@ -84,7 +84,7 @@ export const CollectionsRepository = {
     id: string | number,
     updatedCollection: Partial<Collection>
   ): Promise<{
-    data?: any;
+    data?: Collection;
     error?: string;
     isLoading: boolean;
   }> => {
