@@ -11,7 +11,7 @@ export default function CollectionsPage() {
   const searchParams = useSearchParams();
   const collectionId = searchParams.get("id");
 
-  const { data, error, isLoading } = useGetAllCollections();
+  const { data } = useGetAllCollections();
   const [selectedCollection, setSelectedCollection] =
     useState<Collection | null>(null);
 

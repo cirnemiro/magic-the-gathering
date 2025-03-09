@@ -4,7 +4,7 @@ import useGetAllCollections from "../hooks/useGetAllCollections";
 
 export default function HomePage() {
   const router = useRouter();
-  const { data, error, isLoading } = useGetAllCollections();
+  const { data } = useGetAllCollections();
 
   return (
     <div className="">

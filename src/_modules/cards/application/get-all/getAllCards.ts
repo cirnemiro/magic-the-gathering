@@ -1,13 +1,17 @@
 import { useQuery, UseQueryOptions } from "@tanstack/react-query";
 import { CardRepoistory } from "../../infrastructure/CardRepository";
 import { Api } from "components/infrastructure/api/apiTypes";
-import { Card, CardsResponse } from "../../domain/cardsTypes";
+import { CardsResponse } from "../../domain/cardsTypes";
 
 export namespace FetchCards {
   export type Response = CardsResponse;
   export type Error = Api.Error;
   export type Options = UseQueryOptions<Response, Error>;
-  export type Params = {};
+  export type Params = {
+    pageSize: string;
+    contains: string;
+    supertypes: string;
+  };
 }
 
 const createKey = (params: FetchCards.Params) => [

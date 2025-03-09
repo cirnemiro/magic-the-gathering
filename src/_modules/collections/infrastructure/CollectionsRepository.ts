@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 
 export const CollectionsRepository = {
   getAllCollections: async (): Promise<{
-    data?: any;
+    data?: Collection[];
     error?: string;
     isLoading: boolean;
   }> => {
@@ -29,7 +29,7 @@ export const CollectionsRepository = {
   postCollection: async (
     newCollection: Collection
   ): Promise<{
-    data?: any;
+    data?: Collection;
     error?: string;
     isLoading: boolean;
   }> => {

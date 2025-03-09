@@ -1,4 +1,3 @@
-import { getAllCollections } from "components/_modules/collections/application/get-all/getAllCollections";
 import { getCollectionsById } from "components/_modules/collections/application/get/getCollectionById";
 import { Collection } from "components/_modules/collections/domain/collectionsTypes";
 import { useEffect, useState } from "react";

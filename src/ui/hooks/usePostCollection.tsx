@@ -12,7 +12,7 @@ export default function usePostCollections() {
 
   const postNewCollection = (
     collection: Collection,
-    { onSuccess, onError }: PostCollectionOptions = {}
+    { onSuccess, onError }: PostCollectionOptions
   ) => {
     setIsLoading(true);
 
