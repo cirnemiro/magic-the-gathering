@@ -4,7 +4,11 @@ import { CollectionsRepository } from "../../infrastructure/CollectionsRepositor
 export const updateCollection = async (
   id: string,
   collection: Collection
-): Promise<any> => {
+): Promise<{
+  data?: Collection;
+  error?: string;
+  isLoading: boolean;
+}> => {
   const postCollection = await CollectionsRepository.updateCollectionById(
     id,
     collection

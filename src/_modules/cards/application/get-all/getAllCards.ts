@@ -1,11 +1,11 @@
 import { useQuery, UseQueryOptions } from "@tanstack/react-query";
 import { CardRepoistory } from "../../infrastructure/CardRepository";
-import { Api } from "components/infrastructure/api/apiTypes";
 import { CardsResponse } from "../../domain/cardsTypes";
+import { ApiError } from "next/dist/server/api-utils";
 
 export namespace FetchCards {
   export type Response = CardsResponse;
-  export type Error = Api.Error;
+  export type Error = ApiError;
   export type Options = UseQueryOptions<Response, Error>;
   export type Params = {
     pageSize: string;
