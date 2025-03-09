@@ -3,7 +3,11 @@ import { Collection } from "components/_modules/collections/domain/collectionsTy
 import { useState } from "react";
 
 type PostCollectionOptions = {
-  onSuccess?: (response: any) => void;
+  onSuccess?: (response: {
+    data?: Collection;
+    error?: string;
+    isLoading: boolean;
+  }) => void;
   onError?: (error: string) => void;
 };
 
