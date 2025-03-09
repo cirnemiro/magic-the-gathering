@@ -1,3 +1,4 @@
+"use client";
 import CardMini from "../../atoms/CardMini/CardMini";
 import usePostCollections from "components/ui/hooks/usePostCollection";
 import { useEffect } from "react";
