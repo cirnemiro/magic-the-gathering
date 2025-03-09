@@ -1,5 +1,5 @@
 import { FiltersSate } from "components/ui/screens/CardsPage";
-import Select from "../../atoms/Select";
+import Select from "../../atoms/Inputs/Select";
 
 interface GaleryFiltersProps {
   filters: FiltersSate;

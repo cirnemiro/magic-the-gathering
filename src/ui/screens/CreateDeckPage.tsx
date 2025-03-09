@@ -1,14 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Galery from "../components/organisms/Galery/Galery";
 import GaleryFilters from "../components/organisms/GaleryFilters/GaleryFilters";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { useGetAllCards } from "components/_modules/cards/application/get-all/getAllCards";
 import { Card } from "components/_modules/cards/domain/cardsTypes";
-import CardMini from "../components/atoms/CardMini/CardMini";
+import DeckForm from "../components/organisms/DeckForm/DeckForm";
 
-type SelectedCard = {
+export type SelectedCard = {
   card: Card;
   quantity: number;
 };
@@ -24,7 +24,16 @@ export default function CreateDeckPage() {
 
   const [selectedCards, setSelectedCards] = useState<SelectedCard[]>([]);
 
+  const { cards, isLoading } = useGetAllCards(filters);
+
+  const getTotalCards = () => {
+    return selectedCards.reduce((acc, card) => acc + card.quantity, 0);
+  };
+
   const handleAddCard = (newCard: Card) => {
+    if (getTotalCards() >= 40) {
+      return;
+    }
     setSelectedCards((prev) => {
       const existingCardIndex = prev.findIndex(
         (card) => card.card.id === newCard.id
@@ -43,17 +52,28 @@ export default function CreateDeckPage() {
     });
   };
 
-  const handleSaveDeck = () => {
-    console.log("save deck");
+  const handleRemoveCard = (cardId: string) => {
+    setSelectedCards((prev) => {
+      const existingCardIndex = prev.findIndex(
+        (card) => card.card.id === cardId
+      );
+
+      if (existingCardIndex !== -1) {
+        const updatedCards = [...prev];
+        updatedCards[existingCardIndex] = {
+          ...updatedCards[existingCardIndex],
+          quantity: updatedCards[existingCardIndex].quantity - 1,
+        };
+        if (updatedCards[existingCardIndex].quantity <= 0) {
+          updatedCards.splice(existingCardIndex, 1);
+        }
+        return updatedCards;
+      } else {
+        return prev;
+      }
+    });
   };
 
-  const handleClearDeck = () => {
-    setSelectedCards([]);
-  };
-
-  console.log(selectedCards, "selectedCards");
-
-  const { cards, isLoading } = useGetAllCards(filters);
   return (
     <div className=" w-full p-4 flex flex-col gap-4">
       Create Your Deck
@@ -68,18 +88,12 @@ export default function CreateDeckPage() {
             />
           </div>
         </div>
-        <div className="h-full p-4 bg-amber-950 w-[30%] text-amber-50 flex flex-col gap-4">
-          <p>Deck Name</p>
-          <div className="flex flex-col gap-2">
-            {Object.values(selectedCards).map((selectedCard) => (
-              <CardMini key={selectedCard.card.id} card={selectedCard} />
-            ))}
-          </div>
-          <div className="flex justify-center flex-col gap-4">
-            <button onClick={handleClearDeck}>Clear deck</button>
-            <button onClick={handleSaveDeck}>Save deck</button>
-          </div>
-        </div>
+        <DeckForm
+          handleRemoveCard={handleRemoveCard}
+          selectedCards={selectedCards}
+          totalCards={getTotalCards()}
+          setSelectedCards={setSelectedCards}
+        />
       </div>
     </div>
   );

@@ -5,12 +5,19 @@ interface CardMiniProps {
     card: Card;
     quantity: number;
   };
+  handleRemoveCard: (cardId: string) => void;
 }
-export default function CardMini({ card }: CardMiniProps) {
+export default function CardMini({ card, handleRemoveCard }: CardMiniProps) {
   return (
-    <div className="p-2 bg-white rounded-lg w-full">
-      <p className="text-xs text-gray-500">
+    <div className=" text-xs text-gray-500 p-2 flex justify-between items-center bg-white rounded-lg w-full hover:bg-gray-100">
+      <p className="">
         {card.quantity} - {card.card.name}
+      </p>
+      <p
+        className="cursor-pointer"
+        onClick={() => handleRemoveCard(card.card.id)}
+      >
+        X
       </p>
     </div>
   );

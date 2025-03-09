@@ -1,28 +1,6 @@
-const getCollectionById = (id: string): Promise<any> => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      try {
-        const collections = localStorage.getItem("collections");
+import { CollectionsRepository } from "../../infrastructure/CollectionsRepository";
 
-        if (collections) {
-          const parsedCollections = JSON.parse(collections);
-          const collection = parsedCollections.find(
-            (col: any) => col.id === id
-          );
-
-          if (collection) {
-            resolve(collection);
-          } else {
-            reject("Collection not found");
-          }
-        } else {
-          reject("No collections found");
-        }
-      } catch (error) {
-        reject(error);
-      }
-    }, 1000);
-  });
+export const getCollectionsById = async (id: string) => {
+  const collections = await CollectionsRepository.getCollectionById(id);
+  return collections;
 };
-
-export default getCollectionById;
