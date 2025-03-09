@@ -60,7 +60,9 @@ export const CollectionsRepository = {
     isLoading: boolean;
   }> => {
     try {
-      let collections = JSON.parse(localStorage.getItem("collections") || "[]");
+      const collections = JSON.parse(
+        localStorage.getItem("collections") || "[]"
+      );
 
       const collection = collections.find((col: Collection) => col.id === id);
 
@@ -87,7 +89,9 @@ export const CollectionsRepository = {
     isLoading: boolean;
   }> => {
     try {
-      let collections = JSON.parse(localStorage.getItem("collections") || "[]");
+      const collections = JSON.parse(
+        localStorage.getItem("collections") || "[]"
+      );
 
       const collectionIndex = collections.findIndex(
         (col: Collection) => col.id === id
