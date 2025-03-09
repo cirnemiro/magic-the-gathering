@@ -18,10 +18,8 @@ export type Headers = {
   [name: string]: string;
 };
 
-export namespace Api {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  export type Error = any;
-}
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type ApiError = any;
 
 export type Response<T> = {
   status: number;
