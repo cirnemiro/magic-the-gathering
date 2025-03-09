@@ -1,54 +1,12 @@
-// src/cards/domain/cardTypes.ts
+import { z } from "zod";
+import {
+  CardSchema,
+  ForeignNameSchema,
+  LegalitySchema,
+  ResponseSchema,
+} from "./cardsSchema";
 
-export interface ForeignName {
-  name: string;
-  text: string;
-  type: string;
-  flavor?: string | null;
-  imageUrl: string;
-  language: string;
-  identifiers: {
-    scryfallId: string;
-    multiverseId: number;
-  };
-  multiverseid: number;
-}
-
-export interface Legality {
-  format: string;
-  legality: string;
-}
-
-export interface Card {
-  name: string;
-  manaCost: string;
-  cmc: number;
-  colors: string[];
-  colorIdentity: string[];
-  type: string;
-  types: string[];
-  subtypes?: string[];
-  rarity: string;
-  set: string;
-  setName: string;
-  text: string;
-  flavor?: string;
-  artist: string;
-  number: string;
-  power?: string;
-  toughness?: string;
-  layout: string;
-  multiverseid?: string;
-  imageUrl?: string;
-  variations?: string[];
-  foreignNames?: ForeignName[];
-  printings: string[];
-  originalText?: string;
-  originalType?: string;
-  legalities: Legality[];
-  id: string;
-}
-
-export interface CardsResponse {
-  cards: Card[];
-}
+export type ForeignName = z.infer<typeof ForeignNameSchema>;
+export type Legality = z.infer<typeof LegalitySchema>;
+export type Card = z.infer<typeof CardSchema>;
+export type CardsResponse = z.infer<typeof ResponseSchema>;
