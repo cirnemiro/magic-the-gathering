@@ -9,7 +9,6 @@ export default function useGetCollectionById(id: string) {
 
   useEffect(() => {
     setIsLoading(true);
-
     getCollectionsById(id)
       .then((response) => {
         if (response.data) {
@@ -19,8 +18,6 @@ export default function useGetCollectionById(id: string) {
         }
       })
       .catch((error) => {
-        // Handle the error here
-        console.error(error);
         if (error instanceof Error) {
           setError(error.message);
         } else {

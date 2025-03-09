@@ -1,6 +1,6 @@
 "use client";
 import { Collection } from "components/_modules/collections/domain/collectionsTypes";
-import useGetAllCollections from "../hooks/useGetAllCollections";
+import useGetAllCollections from "../hooks/api/useGetAllCollections";
 import { useEffect, useState } from "react";
 import Card from "../components/atoms/Card/Card";
 import { Button } from "../components/atoms/Inputs";
@@ -47,7 +47,7 @@ export default function CollectionsPage() {
           <div>
             <Button
               onClick={() =>
-                router.push(`/create-deck?deck=${selectedCollection.id}`)
+                router.push(`/collection/${selectedCollection.id}`)
               }
             >
               Edit Deck

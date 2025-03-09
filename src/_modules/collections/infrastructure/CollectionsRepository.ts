@@ -12,7 +12,7 @@ export const CollectionsRepository = {
       let collections = localStorage.getItem("collections");
 
       if (!collections) {
-        collections = JSON.stringify([]); // Si no existe, crea un array vacío
+        collections = JSON.stringify([]);
         localStorage.setItem("collections", collections);
       }
 
@@ -44,7 +44,7 @@ export const CollectionsRepository = {
 
       localStorage.setItem("collections", JSON.stringify(collections));
 
-      return { data: collections, isLoading: false };
+      return { data: newCollection, isLoading: false };
     } catch (error) {
       if (error instanceof Error) {
         return { error: error.message, isLoading: false };
@@ -83,8 +83,7 @@ export const CollectionsRepository = {
   },
 
   updateCollectionById: async (
-    id: string | number,
-    updatedCollection: Partial<Collection>
+    updatedCollection: Collection
   ): Promise<{
     data?: Collection;
     error?: string;
@@ -96,7 +95,7 @@ export const CollectionsRepository = {
       );
 
       const collectionIndex = collections.findIndex(
-        (col: Collection) => col.id === id
+        (col: Collection) => col.id === updatedCollection.id
       );
 
       if (collectionIndex === -1) {
@@ -110,7 +109,7 @@ export const CollectionsRepository = {
 
       localStorage.setItem("collections", JSON.stringify(collections));
 
-      return { data: collections, isLoading: false };
+      return { data: updatedCollection, isLoading: false };
     } catch (error) {
       if (error instanceof Error) {
         return { error: error.message, isLoading: false };

@@ -9,7 +9,6 @@ export default function useGetAllCollections() {
 
   useEffect(() => {
     setIsLoading(true);
-
     getAllCollections()
       .then((response) => {
         if (response.data) {
@@ -19,7 +18,6 @@ export default function useGetAllCollections() {
         }
       })
       .catch((error) => {
-        // Handle the error here
         console.error(error);
         if (error instanceof Error) {
           setError(error.message);

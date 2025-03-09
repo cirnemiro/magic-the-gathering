@@ -14,8 +14,8 @@ const links = [
     href: "/cards",
   },
   {
-    name: "Create Deck",
-    href: "/create-deck",
+    name: "Create Collection",
+    href: "/collection",
   },
   {
     name: "Favourites",
