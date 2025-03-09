@@ -1,5 +1,3 @@
-import { UseQueryOptions } from "@tanstack/react-query";
-
 export type GenericObject<T = unknown> = Record<string, T>;
 
 export type Options = {
