@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { ProvidersWrapper } from "components/ui/providers/ProvidersWrapper";
 import NavBar from "components/ui/components/sections/NavBar/NavBar";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,10 +18,12 @@ export default function RootLayout({
     <html lang="en">
       <body className="overflow-hidden">
         <ProvidersWrapper>
-          <NavBar />
-          <main className="flex-1 overflow-auto h-screen p-6 max-h-screen">
-            <div className="">{children}</div>
-          </main>
+          <Suspense fallback={<div>Loading...</div>}>
+            <NavBar />
+            <main className="flex-1 overflow-auto h-screen p-6 max-h-screen">
+              <div className="">{children}</div>
+            </main>
+          </Suspense>
         </ProvidersWrapper>
       </body>
     </html>
