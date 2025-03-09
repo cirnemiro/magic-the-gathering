@@ -34,7 +34,9 @@ export const CollectionsRepository = {
     isLoading: boolean;
   }> => {
     try {
-      let collections = JSON.parse(localStorage.getItem("collections") || "[]");
+      const collections = JSON.parse(
+        localStorage.getItem("collections") || "[]"
+      );
 
       newCollection.id = uuidv4();
 

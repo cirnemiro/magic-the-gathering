@@ -15,6 +15,7 @@ export type FetchCardsParams = {
   supertypes: string;
 };
 
+
 const createKey = (params: FetchCardsParams) => [
   "stocks",
   JSON.stringify(params),
