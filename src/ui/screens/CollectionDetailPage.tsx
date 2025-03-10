@@ -1,14 +1,12 @@
 "use client";
 
-import { cloneElement, useState } from "react";
+import { useState } from "react";
 import Galery from "../components/organisms/Galery/Galery";
 import GaleryFilters from "../components/organisms/GaleryFilters/GaleryFilters";
-import { useSearchParams } from "next/navigation";
 import { useGetAllCards } from "components/_modules/cards/application/get-all/getAllCards";
 import { useCollectionManager } from "../hooks/logic/useCollectionManager";
 import CollectionForm from "../components/organisms/CollectionForm/CollectionForm";
 import useGetCollectionById from "../hooks/api/useGetCollectionById";
-import { clear } from "console";
 
 interface CreateCollectionPageProps {
   slug: string;

@@ -6,7 +6,6 @@ import Card from "../components/atoms/Card/Card";
 import { Button } from "../components/atoms/Inputs";
 import { useRouter, useSearchParams } from "next/navigation";
 import CollectionCard from "../components/atoms/CollectionCard/CollectionCard";
-import { divide } from "lodash";
 
 export default function CollectionsPage() {
   const router = useRouter();
