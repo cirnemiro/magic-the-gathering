@@ -10,7 +10,6 @@ export const updateCollection = async (
   isLoading: boolean;
 }> => {
   const postCollection = await CollectionsRepository.updateCollectionById(
-    id,
     collection
   );
   return postCollection;

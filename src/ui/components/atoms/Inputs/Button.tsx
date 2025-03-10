@@ -1,4 +1,3 @@
-// components/atoms/Button.tsx
 import React, { ButtonHTMLAttributes, forwardRef } from "react";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -16,7 +15,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const variantClasses =
       variant === "primary"
         ? "bg-blue-500 text-white"
-        : "bg-gray-500 text-black";
+        : "bg-red-700 text-white";
     const sizeClasses =
       size === "small" ? "text-sm" : size === "large" ? "text-lg" : "text-base";
 

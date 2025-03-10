@@ -14,8 +14,8 @@ const links = [
     href: "/cards",
   },
   {
-    name: "Create Deck",
-    href: "/create-deck",
+    name: "Create Collection",
+    href: "/collection",
   },
   {
     name: "Favourites",
@@ -25,7 +25,7 @@ const links = [
 
 export default function NavBar() {
   return (
-    <nav className="bg-gray-800 p-2 flex  items-center">
+    <nav className="bg-gray-700 p-2 flex  items-center">
       {links.map((link) => (
         <Link
           key={link.name}

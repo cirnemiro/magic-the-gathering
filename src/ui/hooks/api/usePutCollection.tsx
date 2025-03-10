@@ -1,4 +1,4 @@
-import { postCollection } from "components/_modules/collections/application/post/postCollection";
+import { putCollection } from "components/_modules/collections/application/put/putCollection";
 import { Collection } from "components/_modules/collections/domain/collectionsTypes";
 import { useState } from "react";
 
@@ -11,16 +11,16 @@ type PostCollectionOptions = {
   onError?: (error: string) => void;
 };
 
-export default function usePostCollections() {
+export default function usePutCollection() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const postNewCollection = (
+  const putNewCollection = (
     collection: Collection,
     { onSuccess, onError }: PostCollectionOptions
   ) => {
     setIsLoading(true);
 
-    postCollection(collection)
+    putCollection(collection)
       .then((response) => {
         if (response.data) {
           if (onSuccess) {
@@ -45,5 +45,5 @@ export default function usePostCollections() {
       });
   };
 
-  return { isLoading, postNewCollection };
+  return { isLoading, putNewCollection };
 }

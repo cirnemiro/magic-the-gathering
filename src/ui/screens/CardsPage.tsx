@@ -9,6 +9,7 @@ export type FiltersSate = {
   pageSize: string;
   contains: string;
   supertypes: string;
+  colors: string;
 };
 
 export default function CardsPage() {
@@ -19,6 +20,7 @@ export default function CardsPage() {
     pageSize: searchParams.get("pageSize") || "20",
     contains: searchParams.get("contains") || "imageUrl",
     supertypes: searchParams.get("supertypes") || "",
+    colors: searchParams.get("colors") || "",
   });
 
   useEffect(() => {
@@ -34,7 +36,9 @@ export default function CardsPage() {
   return (
     <div className="w-full p-4 flex flex-col gap-4">
       <GaleryFilters setFilters={setFilters} filters={filters} />
-      <Galery cards={cards?.cards} isLoading={isLoading} />
+      <div className="h-[80vh] overflow-auto">
+        <Galery cards={cards?.cards} isLoading={isLoading} gridCols={"6"} />
+      </div>
     </div>
   );
 }

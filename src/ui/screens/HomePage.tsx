@@ -1,19 +1,19 @@
 "use client";
 import { useRouter } from "next/navigation";
-import useGetAllCollections from "../hooks/useGetAllCollections";
+import useGetAllCollections from "../hooks/api/useGetAllCollections";
 
 export default function HomePage() {
   const router = useRouter();
   const { data } = useGetAllCollections();
 
   return (
-    <div className="">
+    <div className="p-4">
       <section>
         <h2 className="text-2xl font-bold">Your Collections</h2>
         <div className="flex gap-4">
           <div
             className="border p-4 my-4 cursor-pointer"
-            onClick={() => router.push("/create-deck")}
+            onClick={() => router.push("/collection")}
           >
             Add new collection
           </div>

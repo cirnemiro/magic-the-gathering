@@ -20,8 +20,10 @@ export default function RootLayout({
         <ProvidersWrapper>
           <Suspense fallback={<div>Loading...</div>}>
             <NavBar />
-            <main className="flex-1 overflow-auto h-screen p-6 max-h-screen">
-              <div className="">{children}</div>
+            <main className="bg-slate-200 h-screen">
+              <div className="max-h-screen max-w-[1400px] mx-auto">
+                {children}
+              </div>
             </main>
           </Suspense>
         </ProvidersWrapper>
