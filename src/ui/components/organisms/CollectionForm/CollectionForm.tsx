@@ -22,7 +22,7 @@ export default function CollectionForm({
   const { formik } = useCollectionForm(selectedCards, initialCollection);
 
   return (
-    <div className="h-full p-4 bg-amber-950 w-[30%] text-amber-50">
+    <div className="h-full p-4 bg-gray-700 w-[35%] text-amber-50 rounded-xl">
       <form onSubmit={formik.handleSubmit}>
         <div className="flex flex-col gap-8">
           <div className="flex justify-between items-center">
@@ -48,10 +48,12 @@ export default function CollectionForm({
             ))}
           </div>
           <div className="flex justify-center flex-col gap-4">
-            <Button type="button" onClick={handleClearDeck}>
+            <Button type="button" variant="secondary" onClick={handleClearDeck}>
               Clear deck
             </Button>
-            <Button type="submit">Save deck</Button>
+            <Button variant="primary" type="submit">
+              Save deck
+            </Button>
           </div>
         </div>
       </form>

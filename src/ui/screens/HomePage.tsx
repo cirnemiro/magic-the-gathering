@@ -7,7 +7,7 @@ export default function HomePage() {
   const { data } = useGetAllCollections();
 
   return (
-    <div className="">
+    <div className="p-4">
       <section>
         <h2 className="text-2xl font-bold">Your Collections</h2>
         <div className="flex gap-4">

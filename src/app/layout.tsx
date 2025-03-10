@@ -16,11 +16,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="overflow-hidden ">
+      <body className="overflow-hidden">
         <ProvidersWrapper>
           <Suspense fallback={<div>Loading...</div>}>
             <NavBar />
-            <main className="bg-slate-100 h-screen">
+            <main className="bg-slate-200 h-screen">
               <div className="max-h-screen max-w-[1400px] mx-auto">
                 {children}
               </div>

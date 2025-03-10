@@ -18,13 +18,14 @@ export default function CreateCollectionPage() {
     pageSize: searchParams.get("pageSize") || "20",
     contains: searchParams.get("contains") || "imageUrl",
     supertypes: searchParams.get("supertypes") || "",
+    colors: searchParams.get("colors") || "",
   });
 
   const { cards, isLoading } = useGetAllCards(filters);
 
   return (
     <div className="w-full p-4 flex flex-col gap-4">
-      <h1 className="text-2xl">Create Your Deck</h1>
+      <h1 className="text-2xl font-bold">Create Your Deck</h1>
       <div className="flex gap-4">
         <div className="w-full flex flex-col gap-4">
           <GaleryFilters setFilters={setFilters} filters={filters} />

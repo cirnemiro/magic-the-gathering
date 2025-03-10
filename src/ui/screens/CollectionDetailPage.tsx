@@ -17,12 +17,11 @@ interface CreateCollectionPageProps {
 export default function CollectionDetailPage({
   slug,
 }: CreateCollectionPageProps) {
-  const searchParams = useSearchParams();
-
   const [filters, setFilters] = useState({
-    pageSize: searchParams.get("pageSize") || "20",
-    contains: searchParams.get("contains") || "imageUrl",
-    supertypes: searchParams.get("supertypes") || "",
+    pageSize: "20",
+    contains: "imageUrl",
+    supertypes: "",
+    colors: "",
   });
 
   const { cards, isLoading } = useGetAllCards(filters);

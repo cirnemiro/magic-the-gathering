@@ -12,9 +12,7 @@ export default function CollectionCard({
 }: CollectionCardProps) {
   return (
     <div
-      className={`border p-4 my-4 cursor-pointer ${
-        isSelected ? "bg-gray-200" : ""
-      }`}
+      className={`border p-4 cursor-pointer ${isSelected ? "bg-gray-200" : ""}`}
       onClick={onClick}
     >
       {collection.name}
