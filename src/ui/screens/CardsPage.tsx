@@ -37,7 +37,7 @@ export default function CardsPage() {
     <div className="w-full p-4 flex flex-col gap-4">
       <GaleryFilters setFilters={setFilters} filters={filters} />
       <div className="h-[80vh] overflow-auto">
-        <Galery cards={cards?.cards} isLoading={isLoading} gridCols={"6"} />
+        <Galery cards={cards?.cards} isLoading={isLoading} />
       </div>
     </div>
   );
