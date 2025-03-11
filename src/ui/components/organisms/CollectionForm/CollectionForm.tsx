@@ -51,7 +51,11 @@ export default function CollectionForm({
             <Button type="button" variant="secondary" onClick={handleClearDeck}>
               Clear deck
             </Button>
-            <Button variant="primary" type="submit">
+            <Button
+              variant="primary"
+              type="submit"
+              data-testid="save-deck-button"
+            >
               Save deck
             </Button>
           </div>

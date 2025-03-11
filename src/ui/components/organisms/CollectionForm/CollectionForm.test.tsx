@@ -3,16 +3,11 @@ import { SelectedCard } from "components/ui/hooks/logic/useCollectionManager";
 import { Collection } from "components/_modules/collections/domain/collectionsTypes";
 import { Card } from "components/_modules/cards/domain/cardsTypes";
 import CollectionForm from "./CollectionForm";
+import { useCollectionForm } from "../../../hooks/forms/useCollectionForm";
 
+// Mock para useCollectionForm
 jest.mock("../../../hooks/forms/useCollectionForm", () => ({
-  useCollectionForm: jest.fn(() => ({
-    formik: {
-      handleSubmit: jest.fn(),
-      handleChange: jest.fn(),
-      values: { name: "" },
-      errors: {},
-    },
-  })),
+  useCollectionForm: jest.fn(),
 }));
 
 const exampleCard: Card = {
@@ -65,6 +60,18 @@ describe("CollectionForm", () => {
     cards: selectedCards,
   };
 
+  // Configuramos el mock para `useCollectionForm`
+  beforeEach(() => {
+    (useCollectionForm as jest.Mock).mockReturnValue({
+      formik: {
+        handleSubmit: jest.fn(),
+        handleChange: jest.fn(),
+        values: { name: "My Deck" },
+        errors: {},
+      },
+    });
+  });
+
   it("renders form with input, buttons, and selected cards", () => {
     render(
       <CollectionForm
@@ -101,18 +108,17 @@ describe("CollectionForm", () => {
   });
 
   it("calls formik handleSubmit when clicking 'Save deck'", () => {
-    const mockHandleSubmit = jest.fn();
+    const mockHandleSubmit = jest.fn((e) => e.preventDefault());
 
-    require("../../../hooks/forms/useCollectionForm").useCollectionForm.mockImplementation(
-      () => ({
-        formik: {
-          handleSubmit: mockHandleSubmit,
-          handleChange: jest.fn(),
-          values: { name: "My Deck" },
-          errors: {},
-        },
-      })
-    );
+    // Asignamos un mock al handleSubmit de Formik
+    (useCollectionForm as jest.Mock).mockReturnValue({
+      formik: {
+        handleSubmit: mockHandleSubmit,
+        handleChange: jest.fn(),
+        values: { name: "My Deck" },
+        errors: {},
+      },
+    });
 
     render(
       <CollectionForm
