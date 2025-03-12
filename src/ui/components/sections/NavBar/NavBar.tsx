@@ -1,4 +1,6 @@
+"use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const links = [
   {
@@ -17,20 +19,23 @@ const links = [
     name: "Create Collection",
     href: "/collection",
   },
-  {
-    name: "Favourites",
-    href: "/favourites",
-  },
 ];
 
 export default function NavBar() {
+  const pathname = usePathname();
+
   return (
-    <nav className="bg-gray-700 p-2 flex  items-center">
+    <nav
+      className="bg-gray-700 p-2 flex items-center"
+      aria-label="Main navigation"
+    >
       {links.map((link) => (
         <Link
           key={link.name}
           href={link.href}
-          className="block py-2 px-4 text-white hover:bg-gray-700"
+          className={`py-2 px-4 text-white hover:bg-gray-600 ${
+            pathname === link.href ? "border-b-2 border-white" : ""
+          }`}
         >
           {link.name}
         </Link>
