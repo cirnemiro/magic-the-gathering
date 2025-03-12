@@ -1,17 +1,11 @@
 "use client";
 import { useSearchParams } from "next/navigation";
 
-interface GalerySkeletonProps {
-  gridCols?: string;
-}
-
-export default function GalerySkeleton({
-  gridCols = "4",
-}: GalerySkeletonProps) {
+export default function GalerySkeleton() {
   const searchParams = useSearchParams();
 
   return (
-    <div className={`w-full grid grid-cols-${gridCols} gap-4`}>
+    <div className={`w-full grid grid-cols-5 gap-4`}>
       {[...Array(parseInt(searchParams.get("pageSize") || "20"))].map(
         (_, index) => (
           <div

@@ -21,6 +21,8 @@ export default function CollectionForm({
 }: CollectionFormProps) {
   const { formik } = useCollectionForm(selectedCards, initialCollection);
 
+  console.log(formik.isSubmitting, "formik.isSubmitting");
+
   return (
     <div className="h-full p-4 bg-gray-700 w-[35%] text-amber-50 rounded-xl">
       <form onSubmit={formik.handleSubmit}>
@@ -51,8 +53,13 @@ export default function CollectionForm({
             <Button type="button" variant="secondary" onClick={handleClearDeck}>
               Clear deck
             </Button>
-            <Button variant="primary" type="submit">
-              Save deck
+            <Button
+              variant="primary"
+              type="submit"
+              data-testid="save-deck-button"
+              disabled={formik.isSubmitting}
+            >
+              {formik.isSubmitting ? "Saving deck..." : "Save deck"}
             </Button>
           </div>
         </div>

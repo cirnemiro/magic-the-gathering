@@ -27,6 +27,7 @@ export default function useGetCollectionById(id: string) {
       .finally(() => {
         setIsLoading(false);
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return { data, isLoading, error };

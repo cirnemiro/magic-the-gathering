@@ -10,15 +10,18 @@ export const putCollection = async (
 }> => {
   console.log(collection, "ASDFASDF HHHHHHHHHHHEY");
 
-  if (collection.id) {
-    const updatedCollection = await CollectionsRepository.updateCollectionById(
-      collection
-    );
-    return updatedCollection;
-  } else {
-    const postCollection = await CollectionsRepository.postCollection(
-      collection
-    );
-    return postCollection;
-  }
+  return new Promise(async (resolve) => {
+    setTimeout(async () => {
+      if (collection.id) {
+        const updatedCollection =
+          await CollectionsRepository.updateCollectionById(collection);
+        resolve(updatedCollection);
+      } else {
+        const postCollection = await CollectionsRepository.postCollection(
+          collection
+        );
+        resolve(postCollection);
+      }
+    }, 1000);
+  });
 };
