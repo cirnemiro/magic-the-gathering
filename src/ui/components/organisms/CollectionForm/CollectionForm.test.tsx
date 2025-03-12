@@ -5,7 +5,6 @@ import { Card } from "components/_modules/cards/domain/cardsTypes";
 import CollectionForm from "./CollectionForm";
 import { useCollectionForm } from "../../../hooks/forms/useCollectionForm";
 
-// Mock para useCollectionForm
 jest.mock("../../../hooks/forms/useCollectionForm", () => ({
   useCollectionForm: jest.fn(),
 }));
@@ -60,7 +59,6 @@ describe("CollectionForm", () => {
     cards: selectedCards,
   };
 
-  // Configuramos el mock para `useCollectionForm`
   beforeEach(() => {
     (useCollectionForm as jest.Mock).mockReturnValue({
       formik: {
@@ -110,7 +108,6 @@ describe("CollectionForm", () => {
   it("calls formik handleSubmit when clicking 'Save deck'", () => {
     const mockHandleSubmit = jest.fn((e) => e.preventDefault());
 
-    // Asignamos un mock al handleSubmit de Formik
     (useCollectionForm as jest.Mock).mockReturnValue({
       formik: {
         handleSubmit: mockHandleSubmit,

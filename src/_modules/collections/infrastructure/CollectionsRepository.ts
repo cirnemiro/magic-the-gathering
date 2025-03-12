@@ -118,4 +118,35 @@ export const CollectionsRepository = {
       }
     }
   },
+  deleteCollectionById: async (
+    id: string | number
+  ): Promise<{
+    data?: Collection[];
+    error?: string;
+    isLoading: boolean;
+  }> => {
+    try {
+      const collections = JSON.parse(
+        localStorage.getItem("collections") || "[]"
+      );
+
+      const updatedCollections = collections.filter(
+        (col: Collection) => col.id !== id
+      );
+
+      if (collections.length === updatedCollections.length) {
+        return { error: "Collection not found", isLoading: false };
+      }
+
+      localStorage.setItem("collections", JSON.stringify(updatedCollections));
+
+      return { data: updatedCollections, isLoading: false };
+    } catch (error) {
+      if (error instanceof Error) {
+        return { error: error.message, isLoading: false };
+      } else {
+        return { error: "An unknown error occurred", isLoading: false };
+      }
+    }
+  },
 };

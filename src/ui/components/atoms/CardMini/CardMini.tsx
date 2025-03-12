@@ -10,7 +10,6 @@ interface CardMiniProps {
 }
 export default function CardMini({ card, handleRemoveCard }: CardMiniProps) {
   const cardColor = cardColors[card?.card?.colorIdentity?.[0] ?? "W"].color;
-  console.log(card.card.manaCost);
 
   return (
     <div
