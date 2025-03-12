@@ -1,5 +1,4 @@
 import { deleteCollectionById } from "components/_modules/collections/application/delete/deleteColletcionById";
-import { putCollection } from "components/_modules/collections/application/put/putCollection";
 import { Collection } from "components/_modules/collections/domain/collectionsTypes";
 import { useState } from "react";
 
