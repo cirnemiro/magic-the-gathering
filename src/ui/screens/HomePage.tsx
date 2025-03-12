@@ -22,7 +22,7 @@ export default function HomePage() {
         <h2 className="text-2xl font-bold mb-4">Your Collections</h2>
         <div className="flex gap-4 flex-wrap items-center">
           <div
-            className="border p-4 my-4 cursor-pointer rounded-lg bg-gray-100 hover:bg-gray-300 transition-all"
+            className="border p-4 my-4 cursor-pointer rounded-lg border-slate-500 bg-gray-100 hover:bg-gray-300 transition-all"
             onClick={() => router.push("/collection")}
           >
             ➕ <span className="font-semibold">Add new collection</span>

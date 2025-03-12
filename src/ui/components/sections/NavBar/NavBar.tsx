@@ -17,10 +17,6 @@ const links = [
     name: "Create Collection",
     href: "/collection",
   },
-  {
-    name: "Favourites",
-    href: "/favourites",
-  },
 ];
 
 export default function NavBar() {

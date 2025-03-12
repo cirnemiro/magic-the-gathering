@@ -12,7 +12,7 @@ export default function CollectionCard({
 }: CollectionCardProps) {
   return (
     <div
-      className={`border className="border p-4  cursor-pointer rounded-lg shadow-md hover:shadow-lg hover:bg-gray-300 transition-all ${
+      className={`border border-slate-500  p-4  cursor-pointer rounded-lg shadow-md hover:shadow-lg hover:bg-gray-300 transition-all ${
         isSelected ? "bg-gray-300" : "bg-white"
       }`}
       onClick={onClick}
