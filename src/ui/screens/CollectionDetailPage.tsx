@@ -36,7 +36,7 @@ export default function CollectionDetailPage({
   return (
     <div className="w-full p-4 flex flex-col gap-4">
       <div className="flex justify-between items-center pb-4">
-        <h1 className="text-2xl font-bold">Your Deck - {collection?.name}</h1>
+        <h1 className="text-2xl font-bold">Edit Your Deck</h1>
         <Button
           variant="secondary"
           onClick={() => {
